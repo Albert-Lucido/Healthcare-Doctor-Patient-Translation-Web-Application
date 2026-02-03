@@ -121,6 +121,6 @@ class TranslationService:
             "ar": "Arabic",
             "hi": "Hindi",
             "ru": "Russian",
-            "tl": "Tagalog",
+            "fil": "Filipino",
             "vi": "Vietnamese"
         }

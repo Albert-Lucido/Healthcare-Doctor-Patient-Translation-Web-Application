@@ -10,7 +10,7 @@ const LANGUAGES = [
   { code: 'ar', name: 'Arabic', flag: '🇸🇦' },
   { code: 'hi', name: 'Hindi', flag: '🇮🇳' },
   { code: 'pt', name: 'Portuguese', flag: '🇵🇹' },
-  { code: 'tl', name: 'Tagalog', flag: '🇵🇭' },
+  { code: 'fil', name: 'Filipino', flag: '🇵🇭' },
 ];
 
 function RoleSelector({ onSelectRole }) {
