@@ -19,6 +19,12 @@
   border-radius: 8px;
   font-size: 0.95rem;
   transition: border-color 0.3s ease;
+  background: white;
+  color: #333;
+}
+
+.search-input::placeholder {
+  color: #999;
 }
 
 .search-input:focus {

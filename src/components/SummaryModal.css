@@ -85,6 +85,21 @@
   padding: 1.5rem;
 }
 
+.summary-notice {
+  background: #e8f4fd;
+  border-left: 4px solid #667eea;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.summary-notice p {
+  margin: 0;
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
 .summary-content {
   background: #f8f9fa;
   border-radius: 8px;

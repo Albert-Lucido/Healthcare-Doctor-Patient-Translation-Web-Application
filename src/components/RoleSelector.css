@@ -8,11 +8,12 @@
 
 .role-selector-container {
   background: white;
-  border-radius: 16px;
+  border-radius: 24px;
   padding: 3rem;
   max-width: 600px;
   width: 100%;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
 .role-selector-container h2 {
@@ -90,9 +91,10 @@
 
 .language-group label {
   display: block;
-  color: #555;
+  color: #333;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  font-size: 0.95rem;
 }
 
 .language-select {
@@ -102,6 +104,7 @@
   border-radius: 8px;
   font-size: 1rem;
   background: white;
+  color: #333;
   cursor: pointer;
   transition: border-color 0.3s ease;
 }
@@ -109,6 +112,11 @@
 .language-select:focus {
   outline: none;
   border-color: #667eea;
+}
+
+.language-select option {
+  color: #333;
+  background: white;
 }
 
 .continue-btn {

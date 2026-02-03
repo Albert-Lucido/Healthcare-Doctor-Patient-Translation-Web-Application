@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List
@@ -129,12 +129,14 @@ async def send_message(message: MessageRequest):
 @app.post("/api/messages/audio")
 async def upload_audio(
     file: UploadFile = File(...),
-    role: str = "patient",
-    language: str = "en",
-    target_language: str = "es"
+    role: str = Form(...),
+    language: str = Form(...),
+    target_language: str = Form(...)
 ):
     """Upload audio, transcribe, translate, and store"""
     try:
+        print(f"📝 Received audio from role: {role}")
+        
         # Read audio file
         audio_content = await file.read()
         

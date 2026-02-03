@@ -19,6 +19,10 @@ function SummaryModal({ summary, onClose }) {
         </div>
         
         <div className="modal-body">
+          <div className="summary-notice">
+            <p>🤖 AI-powered medical summary using Groq (Llama 3.3)</p>
+          </div>
+          
           <div className="summary-content">
             <pre>{formatSummary(summary)}</pre>
           </div>
@@ -26,6 +30,9 @@ function SummaryModal({ summary, onClose }) {
           {summary?.message_count && (
             <div className="summary-meta">
               <span>📊 Based on {summary.message_count} messages</span>
+              {summary?.generated_at && (
+                <span> • Generated: {new Date(summary.generated_at).toLocaleString()}</span>
+              )}
             </div>
           )}
         </div>
