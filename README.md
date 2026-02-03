@@ -142,15 +142,7 @@ This web application addresses the critical challenge of language barriers in he
      - Medical terminology handling
    - **Impact**: Core functionality for multilingual communication
 
-### 5. **ChatGPT/Claude (via GitHub Copilot Chat)**
-   - **Usage**: 
-     - Architecture planning and design decisions
-     - Debugging complex async issues
-     - CSS layout problem-solving
-     - API integration guidance
-   - **Impact**: Reduced debugging time by ~50%, improved code quality
-
-### 6. **Documentation Resources**
+### 5. **Documentation Resources**
    - FastAPI Official Docs
    - React Official Docs
    - MongoDB Documentation
