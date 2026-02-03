@@ -12,7 +12,20 @@ function MessageInput({ onSendMessage, onSendAudio, disabled }) {
     if (message.trim() && !disabled) {
       onSendMessage(message);
       setMessage('');
+      // Reset textarea height
+      if (inputRef.current) {
+        inputRef.current.style.height = 'auto';
+      }
       inputRef.current?.focus();
+    }
+  };
+
+  const handleChange = (e) => {
+    setMessage(e.target.value);
+    // Auto-resize textarea
+    if (inputRef.current) {
+      inputRef.current.style.height = 'auto';
+      inputRef.current.style.height = Math.min(inputRef.current.scrollHeight, 200) + 'px';
     }
   };
 
@@ -52,7 +65,7 @@ function MessageInput({ onSendMessage, onSendAudio, disabled }) {
             className="message-input"
             placeholder="Type your message..."
             value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            onChange={handleChange}
             onKeyPress={handleKeyPress}
             disabled={disabled}
             rows={1}

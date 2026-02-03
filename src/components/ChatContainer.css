@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   height: calc(100vh - 120px);
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 1.5rem auto;
   width: calc(100% - 3rem);
   background: white;

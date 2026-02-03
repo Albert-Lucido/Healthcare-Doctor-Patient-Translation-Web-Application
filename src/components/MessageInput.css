@@ -69,12 +69,17 @@
   font-size: 1rem;
   font-family: inherit;
   resize: none;
-  max-height: 120px;
+  max-height: 200px;
   min-height: 48px;
   transition: border-color 0.3s ease;
-  overflow-y: auto;
+  overflow-y: hidden;
   background: white;
   color: #333;
+  line-height: 1.5;
+}
+
+.message-input::-webkit-scrollbar {
+  display: none;
 }
 
 .message-input::placeholder {

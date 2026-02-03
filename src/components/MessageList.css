@@ -78,6 +78,12 @@
   color: white;
 }
 
+.message.received .message-bubble {
+  background: white;
+  color: #333;
+  border: 1px solid #e0e0e0;
+}
+
 .message-header {
   display: flex;
   justify-content: space-between;
