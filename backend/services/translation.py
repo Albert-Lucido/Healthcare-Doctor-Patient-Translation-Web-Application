@@ -48,32 +48,17 @@ class TranslationService:
             
             body = [{"text": text}]
             
-            print(f"🔄 Translating from {source_lang} to {target_lang}")
-            print(f"📍 URL: {url}")
-            print(f"🔑 Region: {self.region}")
-            
             async with httpx.AsyncClient(timeout=10.0) as client:
                 response = await client.post(url, headers=headers, json=body)
-                
-                print(f"📥 Response status: {response.status_code}")
-                if response.status_code != 200:
-                    print(f"❌ Response body: {response.text}")
-                
                 response.raise_for_status()
                 
                 result = response.json()
-                translated = result[0]["translations"][0]["text"]
-                print(f"✅ Translation successful: {text[:30]}... → {translated[:30]}...")
-                return translated
+                return result[0]["translations"][0]["text"]
         except httpx.HTTPStatusError as e:
-            print(f"❌ Azure Translator HTTP Error: {e.response.status_code}")
-            print(f"❌ Error details: {e.response.text}")
-            print(f"❌ Headers sent: {headers}")
+            print(f"❌ Azure Translator Error: {e.response.status_code}")
             return f"[Translation error] {text}"
         except Exception as e:
             print(f"❌ Translation error: {type(e).__name__}: {str(e)}")
-            import traceback
-            traceback.print_exc()
             return f"[Translation unavailable] {text}"
     
     async def detect_language(self, text: str) -> str:
