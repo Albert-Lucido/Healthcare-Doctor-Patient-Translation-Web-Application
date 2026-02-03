@@ -51,9 +51,17 @@ function MessageList({ messages, currentRole, isSearchResult }) {
                   <p className="original-text">{message.original_text}</p>
                   
                   {message.translated_text && 
-                   message.translated_text !== message.original_text && (
+                   message.translated_text !== message.original_text && 
+                   !message.translated_text.includes('[Translation') && (
                     <p className="translated-text">
                       🌐 {message.translated_text}
+                    </p>
+                  )}
+                  
+                  {message.translated_text && 
+                   message.translated_text.includes('[Translation') && (
+                    <p className="translation-error">
+                      ⚠️ Translation unavailable - check API configuration
                     </p>
                   )}
 

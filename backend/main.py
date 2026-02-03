@@ -236,7 +236,14 @@ async def health_check():
     """Health check endpoint"""
     return {
         "status": "healthy",
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.utcnow().isoformat(),
+        "services": {
+            "database": "connected" if message_service else "not initialized",
+            "translation": "configured" if translation_service and translation_service.api_key else "missing API key",
+            "speech": "configured" if speech_service and speech_service.api_key else "missing API key",
+            "storage": "configured" if storage_service else "not initialized",
+            "summary": "configured" if ai_summary_service else "not initialized"
+        }
     }
 
 

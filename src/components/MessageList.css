@@ -111,6 +111,18 @@
   border-top-color: rgba(0, 0, 0, 0.1);
 }
 
+.translation-error {
+  font-size: 0.85rem;
+  color: #ff9800;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 152, 0, 0.3);
+  font-style: italic;
+}
+
+.message.sent .translation-error {
+  color: #ffeb3b;
+}
+
 .audio-player {
   margin-top: 0.5rem;
 }
