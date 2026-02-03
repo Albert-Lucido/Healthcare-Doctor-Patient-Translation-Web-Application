@@ -4,7 +4,7 @@ import MessageInput from './MessageInput';
 import SearchBar from './SearchBar';
 import SummaryModal from './SummaryModal';
 import ApiService from '../services/api';
-import './ChatContainer.css';
+import './css/ChatContainer.css';
 
 function ChatContainer({ role, language, targetLanguage, onChangeRole }) {
   const [messages, setMessages] = useState([]);

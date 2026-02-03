@@ -1,4 +1,4 @@
-import './MessageList.css';
+import './css/MessageList.css';
 
 function MessageList({ messages, currentRole, isSearchResult }) {
   const formatTime = (timestamp) => {

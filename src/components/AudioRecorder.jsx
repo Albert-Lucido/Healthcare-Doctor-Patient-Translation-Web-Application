@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import './AudioRecorder.css';
+import './css/AudioRecorder.css';
 
 function AudioRecorder({ onRecordingComplete, onCancel }) {
   const [isRecording, setIsRecording] = useState(false);

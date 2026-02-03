@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './RoleSelector.css';
+import './css/RoleSelector.css';
 
 const LANGUAGES = [
   { code: 'en', name: 'English', flag: '🇺🇸' },

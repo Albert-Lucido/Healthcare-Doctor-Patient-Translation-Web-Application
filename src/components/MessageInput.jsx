@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import AudioRecorder from './AudioRecorder';
-import './MessageInput.css';
+import './css/MessageInput.css';
 
 function MessageInput({ onSendMessage, onSendAudio, disabled }) {
   const [message, setMessage] = useState('');

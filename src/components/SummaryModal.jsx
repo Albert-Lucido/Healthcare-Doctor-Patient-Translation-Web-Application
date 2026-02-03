@@ -1,4 +1,4 @@
-import './SummaryModal.css';
+import './css/SummaryModal.css';
 
 function SummaryModal({ summary, onClose }) {
   const formatSummary = (summaryData) => {
