@@ -85,6 +85,13 @@ async def root():
 async def send_message(message: MessageRequest):
     """Send a text message and get translation"""
     try:
+        # Check if services are initialized
+        if not translation_service or not message_service:
+            raise HTTPException(
+                status_code=503, 
+                detail="Services not initialized. Please wait a moment and try again."
+            )
+        
         # Translate the message
         translated_text = await translation_service.translate(
             text=message.text,
@@ -107,8 +114,16 @@ async def send_message(message: MessageRequest):
             "message": saved_message,
             "translated_text": translated_text
         }
+    except HTTPException:
+        raise
+    except ValueError as e:
+        print(f"❌ ValueError: {str(e)}")
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        print(f"❌ Error in send_message: {type(e).__name__}: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 
 @app.post("/api/messages/audio")

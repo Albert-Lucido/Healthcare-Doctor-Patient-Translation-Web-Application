@@ -28,29 +28,38 @@ class TranslationService:
         Returns:
             Translated text
         """
-        if not self.api_key:
-            raise ValueError("Azure Translator API key not configured")
-        
         # Skip translation if source and target are the same
         if source_lang == target_lang:
             return text
         
-        url = f"{self.endpoint}{self.translate_path}&from={source_lang}&to={target_lang}"
+        # If API key not configured, return original text with note
+        if not self.api_key:
+            print("⚠️  WARNING: Azure Translator API key not configured. Returning original text.")
+            return f"[Translation disabled - API key needed] {text}"
         
-        headers = {
-            "Ocp-Apim-Subscription-Key": self.api_key,
-            "Ocp-Apim-Subscription-Region": self.region,
-            "Content-Type": "application/json"
-        }
-        
-        body = [{"text": text}]
-        
-        async with httpx.AsyncClient() as client:
-            response = await client.post(url, headers=headers, json=body)
-            response.raise_for_status()
+        try:
+            url = f"{self.endpoint}{self.translate_path}&from={source_lang}&to={target_lang}"
             
-            result = response.json()
-            return result[0]["translations"][0]["text"]
+            headers = {
+                "Ocp-Apim-Subscription-Key": self.api_key,
+                "Ocp-Apim-Subscription-Region": self.region,
+                "Content-Type": "application/json"
+            }
+            
+            body = [{"text": text}]
+            
+            async with httpx.AsyncClient(timeout=10.0) as client:
+                response = await client.post(url, headers=headers, json=body)
+                response.raise_for_status()
+                
+                result = response.json()
+                return result[0]["translations"][0]["text"]
+        except httpx.HTTPStatusError as e:
+            print(f"❌ Azure Translator HTTP Error: {e.response.status_code} - {e.response.text}")
+            return f"[Translation error] {text}"
+        except Exception as e:
+            print(f"❌ Translation error: {type(e).__name__}: {str(e)}")
+            return f"[Translation unavailable] {text}"
     
     async def detect_language(self, text: str) -> str:
         """
